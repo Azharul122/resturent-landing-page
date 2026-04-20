@@ -2,6 +2,7 @@
 
 import { loadHero } from "../../components/Hero.js";
 import { loadAboutUs } from "../../components/home/AboutUs.js";
+import { loadBookATable } from "../../components/home/BookTable.js";
 import { loadMenu } from "../../components/home/Menu.js";
 import { loadOurMenu } from "../../components/home/OurMenues.js";
 import { loadTips } from "../../components/home/OurTips.js";
@@ -19,4 +20,5 @@ export function homePage() {
     loadMenu()
     loadTips()
     loadOurMenu()
+    loadBookATable()
 }
