@@ -1,161 +1,228 @@
 export function loadAboutUs() {
-  // Inject Google Fonts if not already loaded
+  // ── Google Fonts ─────────────────────────────────────────────────────────────
   if (!document.getElementById("about-fonts")) {
     const link = document.createElement("link");
     link.id = "about-fonts";
     link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&display=swap";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500&family=Raleway:wght@300;400&display=swap";
     document.head.appendChild(link);
   }
 
-  // Inject Styles
-  const style = document.createElement("style");
-  style.id = "about-styles";
-  style.textContent = `
-    #bridge-about {
-      background: #0f1218;
-      color: #f5f0e8;
-      padding: 120px 5% 100px;
-      font-family: 'Montserrat', sans-serif;
-      position: relative;
-    }
-
-    // .about-container {
-    //   max-width: 1280px;
-    //   margin: 0 auto;
-    // }
-
-    .about-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-
-    .about-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      letter-spacing: 3px;
-      color: #c9a96e;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-
-    .about-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      font-weight: 300;
-      color: #c9a96e;
-      letter-spacing: 0.08em;
-      margin: 0;
-      line-height: 1.05;
-    }
-
-    .about-divider {
-      width: 80px;
-      height: 1px;
-      background: #c9a96e;
-      margin: 2rem auto;
-      opacity: 0.6;
-    }
-
-    .about-text {
-      max-width: 720px;
-      margin: 0 auto 5rem;
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: rgba(245, 240, 232, 0.85);
-      text-align: center;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 320px 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .about-image {
-      width: 100%;
-      height: 520px;
-      object-fit: cover;
-      border: 1px solid rgba(201, 169, 110, 0.2);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
-
-    .about-pattern {
-      width: 100%;
-      height: 520px;
-      background: linear-gradient(#0f1218, #0f1218),
-                  url('https://via.placeholder.com/600x600/1a2028/c9a96e?text=GEOMETRIC') no-repeat center;
-      background-size: cover;
-      border: 1px solid rgba(201, 169, 110, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(201, 169, 110, 0.15);
-      font-size: 180px;
-      font-weight: 300;
-      overflow: hidden;
-    }
-
-    .about-pattern::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(201,169,110,0.08) 20px,
-        rgba(201,169,110,0.08) 40px
-      );
-    }
-
-    @media (max-width: 992px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+  // ── Styles ────────────────────────────────────────────────────────────────────
+  if (!document.getElementById("about-styles")) {
+    const style = document.createElement("style");
+    style.id = "about-styles";
+    style.textContent = `
+      /* ── Section ── */
+      #au-section {
+        background: #0e1a16;
+        width: 100%;
+        overflow: hidden;
+        font-family: 'Raleway', sans-serif;
       }
-      .about-pattern { height: 380px; }
-    }
+
+      /* ── Header area ── */
+      #au-header {
+        position: relative;
+        text-align: center;
+        padding: 72px 1rem 0;
+      }
+
+      /* Three thin vertical gold lines that run through the header */
+      #au-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 100%;
+        background: rgba(193, 154, 80, 0.35);
+        pointer-events: none;
+      }
+      /* left line */
+      #au-header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(50% - 200px);
+        width: 1px;
+        height: 100%;
+        background: rgba(193, 154, 80, 0.2);
+        pointer-events: none;
+      }
+      /* right line — separate element */
+      #au-line-right {
+        position: absolute;
+        top: 0;
+        right: calc(50% - 200px);
+        /* adjusted via JS positioning */
+        width: 1px;
+        height: 100%;
+        background: rgba(193, 154, 80, 0.2);
+        pointer-events: none;
+      }
+
+      /* "Our Story" script */
+      .au-script {
+        font-family: 'Great Vibes', cursive;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        color: #c19a50;
+        display: block;
+        margin-bottom: 0.3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* "ABOUT US" title */
+      .au-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(2.8rem, 7vw, 5.2rem);
+        font-weight: 400;
+        color: #c19a50;
+        letter-spacing: 0.38em;
+        text-transform: uppercase;
+        margin: 0 0 1.6rem;
+        line-height: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* body text */
+      .au-body {
+        max-width: 560px;
+        margin: 0 auto 64px;
+        font-size: clamp(0.88rem, 1.4vw, 1rem);
+        font-weight: 300;
+        color: rgba(235, 228, 215, 0.88);
+        line-height: 1.85;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.02em;
+      }
+
+      /* ── Image Grid — full-bleed, zero gap ── */
+      #au-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.72fr 1fr;
+        gap: 0;
+        width: 100%;
+      }
+
+      .au-photo {
+        width: 100%;
+        height: clamp(340px, 45vw, 520px);
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Center SVG panel */
+      #au-pattern {
+        background: #0e1a16;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: clamp(340px, 45vw, 520px);
+        overflow: hidden;
+      }
+      #au-pattern svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (max-width: 768px) {
+        #au-grid {
+          grid-template-columns: 1fr;
+        }
+        #au-pattern {
+          height: 260px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // ── SVG diamond lattice pattern ───────────────────────────────────────────────
+  // Art-deco diamond grid: repeated rotated squares forming a lattice
+  const svgPattern = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 360 520" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="diamond-lattice" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <!--
+            Each cell is 60×60.
+            Draw a diamond (rotated square) centred at 30,30 with half-diagonal ~20px,
+            then lines connecting adjacent diamond tips.
+          -->
+          <!-- diamond outline -->
+          <polygon
+            points="30,8 52,30 30,52 8,30"
+            fill="none"
+            stroke="#c19a50"
+            stroke-width="0.9"
+            opacity="0.75"
+          />
+          <!-- horizontal connector (top) -->
+          <line x1="30" y1="8"  x2="30" y2="-12" stroke="#c19a50" stroke-width="0.9" opacity="0.75"/>
+          <!-- horizontal connector (bottom) -->
+          <line x1="30" y1="52" x2="30" y2="72"  stroke="#c19a50" stroke-width="0.9" opacity="0.75"/>
+          <!-- vertical connector (left) -->
+          <line x1="8"  y1="30" x2="-12" y2="30" stroke="#c19a50" stroke-width="0.9" opacity="0.75"/>
+          <!-- vertical connector (right) -->
+          <line x1="52" y1="30" x2="72"  y2="30" stroke="#c19a50" stroke-width="0.9" opacity="0.75"/>
+        </pattern>
+
+        <!-- vignette fade to hide hard edges -->
+        <radialGradient id="vignette" cx="50%" cy="50%" r="55%">
+          <stop offset="30%" stop-color="#0e1a16" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#0e1a16" stop-opacity="0.72"/>
+        </radialGradient>
+      </defs>
+
+      <!-- fill with pattern -->
+      <rect width="360" height="520" fill="url(#diamond-lattice)"/>
+      <!-- soft vignette overlay -->
+      <rect width="360" height="520" fill="url(#vignette)"/>
+    </svg>
   `;
-  document.head.appendChild(style);
 
-  // Create HTML
-  const aboutSection = document.createElement("section");
-  aboutSection.id = "bridge-about";
+  // ── Build DOM ─────────────────────────────────────────────────────────────────
+  const section = document.createElement("section");
+  section.id = "au-section";
 
-  aboutSection.innerHTML = `
-    <div class="about-container container">
-      <div class="about-header">
-        <div class="about-subtitle">Our Story</div>
-        <h2 class="about-title">ABOUT US</h2>
-        <div class="about-divider"></div>
-      </div>
+  section.innerHTML = `
+    <!-- Header -->
+    <div id="au-header">
+      <div id="au-line-right"></div>
 
-      <div class="about-text">
-        <p>Bridge Fine Dining was born from a deep passion for exceptional cuisine and timeless elegance. Nestled in the heart of New York, we bring together centuries-old culinary traditions with modern creativity, offering an intimate dining experience where every detail is thoughtfully crafted.</p>
-        <p>Our philosophy is simple: the finest ingredients, prepared with precision and served with genuine warmth. From our carefully curated wine list to our seasonal tasting menus, every element is designed to create unforgettable moments around the table.</p>
-      </div>
+      <span class="au-script">Our Story</span>
+      <h2 class="au-title">About Us</h2>
 
-      <div class="about-grid">
-        <!-- Left Image: Restaurant Interior -->
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34b4?w=800&q=80" 
-             alt="Bridge Fine Dining Interior" 
-             class="about-image">
+      <p class="au-body">
+        Lorem ipsum dolor sit amet, consectet adipisicing eli sed do eiu sm od
+        tempor incididunt ut abore et dolore mag aliqua. Ut enim ad minm eniam
+        quis nostrud.
+      </p>
+    </div>
 
-        <!-- Center Pattern -->
-         <img src="https://bridge496.qodeinteractive.com/wp-content/uploads/2019/10/main-img-3.jpg" 
-             alt="Signature Chocolate Tart" 
-             class="about-image">
+    <!-- Full-bleed three-column grid -->
+    <div id="au-grid">
+      <img
+        class="au-photo"
+        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34b4?w=900&q=80"
+        alt="Restaurant interior"
+      />
 
-        <!-- Right Image: Dessert -->
-        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800&q=80" 
-             alt="Signature Chocolate Tart" 
-             class="about-image">
-      </div>
+      <div id="au-pattern">${svgPattern}</div>
+
+      <img
+        class="au-photo"
+        src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900&q=80"
+        alt="Signature chocolate tart"
+      />
     </div>
   `;
 
-  // Append to body (after hero or navbar)
-  document.body.appendChild(aboutSection);
+  document.body.appendChild(section);
 }
