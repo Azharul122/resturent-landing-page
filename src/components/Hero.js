@@ -1,19 +1,19 @@
 export function loadHero() {
-    // ── Inject Google Fonts ──────────────────────────────────────────────────────
-    if (!document.getElementById("hero-fonts")) {
-        const link = document.createElement("link");
-        link.id = "hero-fonts";
-        link.rel = "stylesheet";
-        link.href =
-            "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Cinzel:wght@400;700&family=Raleway:wght@300;400&display=swap";
-        document.head.appendChild(link);
-    }
+  // ── Inject Google Fonts ──────────────────────────────────────────────────────
+  if (!document.getElementById("hero-fonts")) {
+    const link = document.createElement("link");
+    link.id = "hero-fonts";
+    link.rel = "stylesheet";
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Cinzel:wght@400;700&family=Raleway:wght@300;400&display=swap";
+    document.head.appendChild(link);
+  }
 
-    // ── Inject CSS ───────────────────────────────────────────────────────────────
-    if (!document.getElementById("hero-styles")) {
-        const style = document.createElement("style");
-        style.id = "hero-styles";
-        style.textContent = `
+  // ── Inject CSS ───────────────────────────────────────────────────────────────
+  if (!document.getElementById("hero-styles")) {
+    const style = document.createElement("style");
+    style.id = "hero-styles";
+    style.textContent = `
       /* ── Variables ── */
       :root {
         --gold:        #c9a84c;
@@ -25,7 +25,7 @@ export function loadHero() {
       }
 
       /* ── Wrapper ── */
-      #food-hero {
+      #home-section{
         position: relative;
         width: 100%;
         height: 100svh;
@@ -228,36 +228,36 @@ export function loadHero() {
         color: var(--gold);
       }
     `;
-        document.head.appendChild(style);
-    }
+    document.head.appendChild(style);
+  }
 
-    // ── Slide data ───────────────────────────────────────────────────────────────
-    const slides = [
-        {
-            bg: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=80",
-            subtitle: "the most delicious flavor combos",
-            title: "The Food Heaven",
-            body: "Experimentation in the kitchen and focus on excellence are among our main driving forces in cooking.",
-        },
-        {
-            bg: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80",
-            subtitle: "crafted with passion & precision",
-            title: "The Art of Taste",
-            body: "Every dish is a canvas — painted with the finest ingredients and decades of culinary mastery.",
-        },
-        {
-            bg: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80",
-            subtitle: "a journey through every bite",
-            title: "Pure Indulgence",
-            body: "From farm to table, we honour each ingredient, letting its natural character shine through.",
-        },
-    ];
+  // ── Slide data ───────────────────────────────────────────────────────────────
+  const slides = [
+    {
+      bg: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1600&q=80",
+      subtitle: "the most delicious flavor combos",
+      title: "The Food Heaven",
+      body: "Experimentation in the kitchen and focus on excellence are among our main driving forces in cooking.",
+    },
+    {
+      bg: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1600&q=80",
+      subtitle: "crafted with passion & precision",
+      title: "The Art of Taste",
+      body: "Every dish is a canvas — painted with the finest ingredients and decades of culinary mastery.",
+    },
+    {
+      bg: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80",
+      subtitle: "a journey through every bite",
+      title: "Pure Indulgence",
+      body: "From farm to table, we honour each ingredient, letting its natural character shine through.",
+    },
+  ];
 
-    // ── Build HTML ───────────────────────────────────────────────────────────────
-    const wrapper = $(`<section id="food-hero"></section>`);
+  // ── Build HTML ───────────────────────────────────────────────────────────────
+  const wrapper = $(`<section id="home-section"></section>`);
 
-    slides.forEach((s, i) => {
-        wrapper.append(`
+  slides.forEach((s, i) => {
+    wrapper.append(`
       <div class="fh-slide${i === 0 ? " active" : ""}">
         <div class="fh-slide-bg" style="background-image:url('${s.bg}')"></div>
         <div class="fh-content">
@@ -272,74 +272,74 @@ export function loadHero() {
         </div>
       </div>
     `);
-    });
+  });
 
-    // arrows
-    wrapper.append(`
+  // arrows
+  wrapper.append(`
     <button class="fh-arrow fh-arrow-prev" aria-label="Previous">&#8249;</button>
     <button class="fh-arrow fh-arrow-next" aria-label="Next">&#8250;</button>
   `);
 
-    // dots
-    const dotsEl = $(`<div class="fh-dots"></div>`);
-    slides.forEach((_, i) => {
-        dotsEl.append(
-            `<button class="fh-dot${i === 0 ? " active" : ""}" data-index="${i}">${i + 1}</button>`
-        );
-    });
-    wrapper.append(dotsEl);
+  // dots
+  const dotsEl = $(`<div class="fh-dots"></div>`);
+  slides.forEach((_, i) => {
+    dotsEl.append(
+      `<button class="fh-dot${i === 0 ? " active" : ""}" data-index="${i}">${i + 1}</button>`
+    );
+  });
+  wrapper.append(dotsEl);
 
-    // mount into body (or swap for any container selector you prefer)
-    // ✅ Good — only replaces content, keeps navbar
-    if ($("#food-hero").length === 0) {
-        $("body").append(wrapper);        // or prepend if you want it right after navbar
-    } else {
-        $("#food-hero").replaceWith(wrapper);
-    }
+  // mount into body (or swap for any container selector you prefer)
+  // ✅ Good — only replaces content, keeps navbar
+  if ($("#home").length === 0) {
+    $("body").append(wrapper);        // or prepend if you want it right after navbar
+  } else {
+    $("#home").replaceWith(wrapper);
+  }
 
-    // ── Slider logic ─────────────────────────────────────────────────────────────
-    let current = 0;
-    let autoTimer;
+  // ── Slider logic ─────────────────────────────────────────────────────────────
+  let current = 0;
+  let autoTimer;
 
-    function goTo(index) {
-        const $slides = wrapper.find(".fh-slide");
-        const $dots = wrapper.find(".fh-dot");
+  function goTo(index) {
+    const $slides = wrapper.find(".fh-slide");
+    const $dots = wrapper.find(".fh-dot");
 
-        $slides.eq(current).removeClass("active");
-        $dots.eq(current).removeClass("active");
+    $slides.eq(current).removeClass("active");
+    $dots.eq(current).removeClass("active");
 
-        current = (index + slides.length) % slides.length;
+    current = (index + slides.length) % slides.length;
 
-        $slides.eq(current).addClass("active");
-        $dots.eq(current).addClass("active");
+    $slides.eq(current).addClass("active");
+    $dots.eq(current).addClass("active");
 
-        resetTimer();
-    }
-
-    function resetTimer() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => goTo(current + 1), 5500);
-    }
-
-    // arrow clicks
-    wrapper.find(".fh-arrow-prev").on("click", () => goTo(current - 1));
-    wrapper.find(".fh-arrow-next").on("click", () => goTo(current + 1));
-
-    // dot clicks
-    wrapper.find(".fh-dot").on("click", function () {
-        goTo(parseInt($(this).data("index")));
-    });
-
-    // touch / swipe support
-    let touchStartX = 0;
-    wrapper[0].addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].clientX;
-    }, { passive: true });
-    wrapper[0].addEventListener("touchend", (e) => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
-    });
-
-    // start auto-play
     resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5500);
+  }
+
+  // arrow clicks
+  wrapper.find(".fh-arrow-prev").on("click", () => goTo(current - 1));
+  wrapper.find(".fh-arrow-next").on("click", () => goTo(current + 1));
+
+  // dot clicks
+  wrapper.find(".fh-dot").on("click", function () {
+    goTo(parseInt($(this).data("index")));
+  });
+
+  // touch / swipe support
+  let touchStartX = 0;
+  wrapper[0].addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  wrapper[0].addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  // start auto-play
+  resetTimer();
 }

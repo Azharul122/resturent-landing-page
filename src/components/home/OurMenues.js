@@ -12,7 +12,7 @@ export function loadOurMenu() {
     const style = document.createElement("style");
     style.id = "our-menu-styles";
     style.textContent = `
-      #bridge-our-menu {
+      #menu-section {
         background: #0e1219;
         color: #f5f0e8;
         font-family: 'Montserrat', sans-serif;
@@ -276,7 +276,7 @@ export function loadOurMenu() {
   ];
 
   const section = document.createElement("section");
-  section.id = "bridge-our-menu";
+  section.id = "menu-section";
 
   section.innerHTML = `
     <div class="om-container">

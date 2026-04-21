@@ -11,7 +11,7 @@ export function loadBookATable() {
     const style = document.createElement("style");
     style.id = "bat-styles";
     style.textContent = `
-      #bridge-book-table {
+      #book-section {
         background: #0e1219;
         position: relative;
         overflow: hidden;
@@ -167,7 +167,7 @@ export function loadBookATable() {
   const dateVal = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
 
   const section = document.createElement("section");
-  section.id = "bridge-book-table";
+  section.id = "book-section";
 
   section.innerHTML = `
     <svg class="bat-geo bat-geo-left" viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">

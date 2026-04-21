@@ -1,20 +1,20 @@
 export function loadContactUs() {
 
-  // ── Google Fonts ──────────────────────────────────────────────────────────────
-  if (!document.getElementById("contact-fonts")) {
-    const link = document.createElement("link");
-    link.id = "contact-fonts";
-    link.rel = "stylesheet";
-    link.href =
-      "https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap";
-    document.head.appendChild(link);
-  }
+    // ── Google Fonts ──────────────────────────────────────────────────────────────
+    if (!document.getElementById("contact-fonts")) {
+        const link = document.createElement("link");
+        link.id = "contact-fonts";
+        link.rel = "stylesheet";
+        link.href =
+            "https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500&family=Raleway:wght@300;400;500&display=swap";
+        document.head.appendChild(link);
+    }
 
-  // ── Styles ────────────────────────────────────────────────────────────────────
-  if (!document.getElementById("contact-styles")) {
-    const style = document.createElement("style");
-    style.id = "contact-styles";
-    style.textContent = `
+    // ── Styles ────────────────────────────────────────────────────────────────────
+    if (!document.getElementById("contact-styles")) {
+        const style = document.createElement("style");
+        style.id = "contact-styles";
+        style.textContent = `
 
       /* ── Section wrapper ── */
       #ct-section {
@@ -193,14 +193,14 @@ export function loadContactUs() {
         .ct-card:nth-child(4)   { border-bottom: none; }
       }
     `;
-    document.head.appendChild(style);
-  }
+        document.head.appendChild(style);
+    }
 
-  // ── Build DOM ─────────────────────────────────────────────────────────────────
-  const section = document.createElement("section");
-  section.id = "ct-section";
+    // ── Build DOM ─────────────────────────────────────────────────────────────────
+    const section = document.createElement("section");
+    section.id = "ct-section";
 
-  section.innerHTML = `
+    section.innerHTML = `
 
     <!-- Full-width Google Map -->
     <iframe
@@ -263,5 +263,5 @@ export function loadContactUs() {
     </div>
   `;
 
-  document.body.appendChild(section);
+    document.body.appendChild(section);
 }

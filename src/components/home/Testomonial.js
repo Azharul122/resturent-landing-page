@@ -14,7 +14,7 @@ export function loadTestimonial() {
         const style = document.createElement("style");
         style.id = "testimonial-styles";
         style.textContent = `
-      #bridge-testimonial {
+      #testimonials-section {
         background: #101520;
         color: #f5f0e8;
         font-family: 'Montserrat', sans-serif;
@@ -204,7 +204,7 @@ export function loadTestimonial() {
 
     // ── BUILD HTML ──
     const section = document.createElement("section");
-    section.id = "bridge-testimonial";
+    section.id = "testimonials-section";
 
     section.innerHTML = `
     <div class="testimonial-wrapper ">
