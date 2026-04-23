@@ -1,6 +1,6 @@
 export function loadFooter() {
     
-    // ====================== LOAD FONTS ======================
+
     if (!document.getElementById("bf-fonts")) {
         const link = document.createElement("link");
         link.id = "bf-fonts";
@@ -9,12 +9,12 @@ export function loadFooter() {
         document.head.appendChild(link);
     }
 
-    // ====================== LOAD STYLES ======================
+
     if (!document.getElementById("bf-styles")) {
         const style = document.createElement("style");
         style.id = "bf-styles";
         style.textContent = `
-            /* ==================== FOOTER STYLES ==================== */
+
             #bridge-footer {
                 background: #0b1018;
                 color: #f5f0e8;
@@ -158,7 +158,7 @@ export function loadFooter() {
         document.head.appendChild(style);
     }
 
-    // ====================== CREATE FOOTER ======================
+
     if (!document.getElementById("bridge-footer")) {
         const footer = document.createElement("footer");
         footer.id = "bridge-footer";
@@ -190,7 +190,7 @@ export function loadFooter() {
         document.body.appendChild(footer);
     }
 
-    // ====================== CREATE GLOBAL SCROLL BUTTON ======================
+
     if (!document.getElementById("bf-scroll-btn")) {
         const scrollBtn = document.createElement("button");
         scrollBtn.id = "bf-scroll-btn";
