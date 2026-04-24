@@ -22,6 +22,7 @@ export function loadOurMenu() {
       .om-container {
         max-width: 1280px;
         margin: 0 auto;
+        max-height: calc(100vh - 160px);
       }
 
       /* ── HEADER ── */
@@ -147,6 +148,7 @@ export function loadOurMenu() {
         border: 1px solid rgba(201, 169, 110, 0.15);
         position: relative;
         overflow: hidden;
+        height: 100% !important;
       }
 
       /* background image peek on back */

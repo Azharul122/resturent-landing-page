@@ -23,7 +23,7 @@ export function loadTips() {
       .tips-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        min-height: 620px;
+        height: calc(100vh - 80px);
         max-width: 1600px;
         margin: 0 auto;
       }
@@ -153,7 +153,7 @@ export function loadTips() {
       <!-- LEFT IMAGE: chef portrait -->
       <div class="tips-img-left">
         <img
-          src="https://images.unsplash.com/photo-1583394293214-0d1e79ca9c74?w=900&q=85"
+          src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Chef portrait"
         />
       </div>

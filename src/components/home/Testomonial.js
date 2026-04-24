@@ -1,19 +1,19 @@
 export function loadTestimonial() {
 
-    // Inject Google Fonts (only once)
-    if (!document.getElementById("testimonial-fonts")) {
-        const link = document.createElement("link");
-        link.id = "testimonial-fonts";
-        link.rel = "stylesheet";
-        link.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap";
-        document.head.appendChild(link);
-    }
+  // Inject Google Fonts (only once)
+  if (!document.getElementById("testimonial-fonts")) {
+    const link = document.createElement("link");
+    link.id = "testimonial-fonts";
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap";
+    document.head.appendChild(link);
+  }
 
-    // Inject Styles (only once)
-    if (!document.getElementById("testimonial-styles")) {
-        const style = document.createElement("style");
-        style.id = "testimonial-styles";
-        style.textContent = `
+  // Inject Styles (only once)
+  if (!document.getElementById("testimonial-styles")) {
+    const style = document.createElement("style");
+    style.id = "testimonial-styles";
+    style.textContent = `
       #testimonials-section {
         background: #101520;
         color: #f5f0e8;
@@ -21,6 +21,7 @@ export function loadTestimonial() {
         position: relative;
         overflow: hidden;
         min-height: 100vh;
+        padding-top: 20px
       }
 
       .testimonial-wrapper {
@@ -170,43 +171,43 @@ export function loadTestimonial() {
           padding: 50px 28px 40px;
         }
         .t-quote-mark {
-          font-size: 4.5rem;
+          // font-size: 4.5rem;
         }
         .t-text {
           font-size: 1.15rem;
         }
       }
     `;
-        document.head.appendChild(style);
+    document.head.appendChild(style);
+  }
+
+  // ── DATA ──
+  const testimonialsData = [
+    {
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing sed do eiusmod tempor incididunt ut labore diam.",
+      author: "JAN WINSENT",
+      image: "https://images.unsplash.com/photo-1570560258879-af7f8e1447ac?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    {
+      text: "An unforgettable dining experience. The attention to detail in every dish is truly remarkable and deeply moving.",
+      author: "MARIA RODRIGUEZ",
+      image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85"
+    },
+    {
+      text: "The ambiance, service, and flavors made this one of the finest evenings we have ever had the pleasure of enjoying.",
+      author: "DAVID CHEN",
+      image: "https://images.unsplash.com/photo-1606836576983-8b458e75221d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
+  ];
 
-    // ── DATA ──
-    const testimonialsData = [
-        {
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing sed do eiusmod tempor incididunt ut labore diam.",
-            author: "JAN WINSENT",
-            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a9c?w=1200&q=85"
-        },
-        {
-            text: "An unforgettable dining experience. The attention to detail in every dish is truly remarkable and deeply moving.",
-            author: "MARIA RODRIGUEZ",
-            image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=85"
-        },
-        {
-            text: "The ambiance, service, and flavors made this one of the finest evenings we have ever had the pleasure of enjoying.",
-            author: "DAVID CHEN",
-            image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34b4?w=1200&q=85"
-        }
-    ];
+  let currentIndex = 0;
+  let isAnimating = false;
 
-    let currentIndex = 0;
-    let isAnimating = false;
+  // ── BUILD HTML ──
+  const section = document.createElement("section");
+  section.id = "testimonials-section";
 
-    // ── BUILD HTML ──
-    const section = document.createElement("section");
-    section.id = "testimonials-section";
-
-    section.innerHTML = `
+  section.innerHTML = `
     <div class="testimonial-wrapper ">
 
       <!-- LEFT -->
@@ -244,48 +245,48 @@ export function loadTestimonial() {
     </div>
   `;
 
-    document.body.appendChild(section);
+  document.body.appendChild(section);
 
-    // ── LOGIC ──
-    function changeTo(index) {
-        if (index === currentIndex || isAnimating) return;
-        isAnimating = true;
+  // ── LOGIC ──
+  function changeTo(index) {
+    if (index === currentIndex || isAnimating) return;
+    isAnimating = true;
 
-        const left = document.getElementById('tLeft');
-        const text = document.getElementById('tText');
-        const author = document.getElementById('tAuthor');
-        const img = document.getElementById('tImage');
+    const left = document.getElementById('tLeft');
+    const text = document.getElementById('tText');
+    const author = document.getElementById('tAuthor');
+    const img = document.getElementById('tImage');
 
-        // fade out
-        left.classList.add('t-fading');
+    // fade out
+    left.classList.add('t-fading');
 
-        setTimeout(() => {
-            const d = testimonialsData[index];
-            text.textContent = d.text;
-            author.textContent = d.author;
-            img.src = d.image;
-            currentIndex = index;
+    setTimeout(() => {
+      const d = testimonialsData[index];
+      text.textContent = d.text;
+      author.textContent = d.author;
+      img.src = d.image;
+      currentIndex = index;
 
-            // update pagination
-            document.querySelectorAll('.t-page-item').forEach((el, i) => {
-                el.classList.toggle('active', i === index);
-            });
+      // update pagination
+      document.querySelectorAll('.t-page-item').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
 
-            // fade in
-            left.classList.remove('t-fading');
-            isAnimating = false;
-        }, 450);
-    }
+      // fade in
+      left.classList.remove('t-fading');
+      isAnimating = false;
+    }, 450);
+  }
 
-    // Dot clicks
-    section.querySelectorAll('.t-page-item').forEach(el => {
-        el.addEventListener('click', () => {
-            changeTo(parseInt(el.dataset.index));
-        });
+  // Dot clicks
+  section.querySelectorAll('.t-page-item').forEach(el => {
+    el.addEventListener('click', () => {
+      changeTo(parseInt(el.dataset.index));
     });
+  });
 
-    // Auto-advance every 7s
-    setInterval(() => {
-        changeTo((currentIndex + 1) % testimonialsData.length);
-    }, 7000);
+  // Auto-advance every 7s
+  setInterval(() => {
+    changeTo((currentIndex + 1) % testimonialsData.length);
+  }, 7000);
 }

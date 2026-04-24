@@ -22,6 +22,7 @@ export function loadContactUs() {
         width: 100%;
         overflow: hidden;
         font-family: 'Raleway', sans-serif;
+        padding-top : 80px;
       }
 
       /* ── Full-width Google Map ── */
@@ -30,7 +31,7 @@ export function loadContactUs() {
         height: clamp(260px, 38vw, 420px);
         display: block;
         border: none;
-        filter: grayscale(1) invert(0.92) contrast(0.85);
+        // filter: grayscale(1) invert(0.92) contrast(0.85);
       }
 
       /* ── Bottom content row ── */

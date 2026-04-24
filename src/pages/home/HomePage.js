@@ -12,14 +12,14 @@ import { loadTestimonial } from "../../components/home/Testomonial.js";
 
 
 export function homePage() {
-  
-    // loadHero()
-    // loadAboutUs()
-    // loadTestimonial()
-    // loadSpecialties()
+
+    loadHero()
+    loadAboutUs()
+    loadTestimonial()
+    loadSpecialties()
     loadMenu()
-    // loadTips()
-    // loadOurMenu()
-    // loadBookATable()
+    loadTips()
+    loadOurMenu()
+    loadBookATable()
 
 }

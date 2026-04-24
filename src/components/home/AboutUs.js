@@ -210,7 +210,7 @@ export function loadAboutUs() {
     <div id="au-grid">
       <img
         class="au-photo"
-        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34b4?w=900&q=80"
+        src="https://images.unsplash.com/photo-1613274554329-70f997f5789f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         alt="Restaurant interior"
       />
 
