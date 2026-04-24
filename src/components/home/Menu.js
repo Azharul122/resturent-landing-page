@@ -18,6 +18,7 @@ export function loadMenu() {
         color: #f5f0e8;
         padding: 90px 6% 100px;
         font-family: 'Montserrat', sans-serif;
+        // overflow : hidden;
       }
 
       .menu-container {
@@ -62,12 +63,16 @@ export function loadMenu() {
       /* ── ITEM ── */
       .menu-item {
         padding: 28px 0 24px;
+      overflow: hidden !important;
+
+
         border-top: 1px solid rgba(201, 169, 110, 0.15);
       }
 
       .menu-item:last-child,
       .menu-item:nth-last-child(2):nth-child(odd) {
         border-bottom: none;
+         overflow: hidden !important;
       }
 
       .menu-item-top {
@@ -136,22 +141,22 @@ export function loadMenu() {
 
   const menuItems = [
     // LEFT COLUMN
-    { name: "BEEF BURGER MEAL",        price: "$32", desc: "Classic greek salad, barrel aged feta cheese, bread" },
-    { name: "ROASTED LAMB RUMP",       price: "$25", desc: "Grilled lamb cutlets, pomegranate glaze, butternut" },
-    { name: "PAN SEARED SEA BASS",     price: "$38", desc: "Saffron and mussel's broth, new potatoes, beans" },
+    { name: "BEEF BURGER MEAL", price: "$32", desc: "Classic greek salad, barrel aged feta cheese, bread" },
+    { name: "ROASTED LAMB RUMP", price: "$25", desc: "Grilled lamb cutlets, pomegranate glaze, butternut" },
+    { name: "PAN SEARED SEA BASS", price: "$38", desc: "Saffron and mussel's broth, new potatoes, beans" },
     { name: "KING PRAWNS AND LOBSTER", price: "$38", desc: "Creamy saffron, sauce Vierge" },
-    { name: "CITRUS CURED SALMON",     price: "$41", desc: "Horseradish creme fraiche, beetroot mousse, oil" },
+    { name: "CITRUS CURED SALMON", price: "$41", desc: "Horseradish creme fraiche, beetroot mousse, oil" },
     // RIGHT COLUMN
-    { name: "PAN SEARED SCALLOPS",        price: "$29", desc: "Saffron, celeriac puree, black pudding, olive oil" },
-    { name: "BAKED CAMEMBERT",            price: "$25", desc: "Red onion marmelade, garlic Foccacia bread, grilled fig" },
-    { name: "BRAISED OX CHEEK RAVIOLI",   price: "$38", desc: "Mediterranean olives casserole, celeriac puree" },
-    { name: "CORN FED CHICKEN",           price: "$17", desc: "Wild mushrooms, truffle potatoes, braised leeks, carrots" },
+    { name: "PAN SEARED SCALLOPS", price: "$29", desc: "Saffron, celeriac puree, black pudding, olive oil" },
+    { name: "BAKED CAMEMBERT", price: "$25", desc: "Red onion marmelade, garlic Foccacia bread, grilled fig" },
+    { name: "BRAISED OX CHEEK RAVIOLI", price: "$38", desc: "Mediterranean olives casserole, celeriac puree" },
+    { name: "CORN FED CHICKEN", price: "$17", desc: "Wild mushrooms, truffle potatoes, braised leeks, carrots" },
     { name: "NDUJA PORK CHICKEN TERRINE", price: "$41", desc: "Smoked duck breast, pistachio, smoked pancetta" },
   ];
 
   // Re-order for 2-col grid: interleave left/right so CSS grid fills column by column
   // Grid auto-flow is row, so we need: L1,R1,L2,R2 ...
-  const left  = menuItems.slice(0, 5);
+  const left = menuItems.slice(0, 5);
   const right = menuItems.slice(5);
   const interleaved = left.map((item, i) => [item, right[i]]).flat().filter(Boolean);
 
