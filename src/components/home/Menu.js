@@ -1,3 +1,5 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
+
 export function loadMenu() {
 
   // Inject Google Fonts (only once)
@@ -184,6 +186,9 @@ export function loadMenu() {
       </div>
     </div>
   `;
+
+  const target= section.querySelectorAll(".menu-item");
+  createScrollReveal(target, { threshold: 0.15, delay: 100 });
 
   document.body.appendChild(section);
 }

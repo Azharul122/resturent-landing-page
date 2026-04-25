@@ -1,3 +1,4 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
 import { createButton } from "../ui/button";
 
 export function loadOurMenu() {
@@ -333,6 +334,9 @@ export function loadOurMenu() {
   // const button = createButton("EXPLORE", () => navigate("menu"));
   // // button.classList.add("om-explore");
   // section.appendChild(button);
+
+  const target =section.querySelectorAll(".om-plus, .om-back-name, .om-back-desc, .om-back-link")
+  createScrollReveal(target, { threshold: 0, delay: 100 });
 
   document.body.appendChild(section);
 }

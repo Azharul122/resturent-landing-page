@@ -1,3 +1,4 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
 import { createButton } from "../ui/button";
 
 export function loadTips() {
@@ -187,6 +188,9 @@ export function loadTips() {
 
   const btn = createButton("READ MORE", () => { });
   section.querySelector(".tips-content").appendChild(btn);
+
+  const target= section.querySelectorAll(".tips-subtitle, .tips-title, .tips-desc, .fh-btn");
+createScrollReveal(target, { threshold: 0.15, delay: 150 });
 
   document.body.appendChild(section);
 }

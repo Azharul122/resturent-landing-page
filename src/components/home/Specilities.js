@@ -1,3 +1,4 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
 import { createButton } from "../ui/button";
 
 export function loadSpecialties() {
@@ -171,6 +172,10 @@ export function loadSpecialties() {
   const btn = createButton("View All", () => {
     // window.location.href = "#menu"; 
   });
+
+  const target = section.querySelectorAll(".sp-subtitle, .sp-title, .sp-desc")
+  
+  createScrollReveal(target, { threshold: 0.15, delay: 150 });
 
   section.querySelector(".sp-right").appendChild(btn);
   document.body.appendChild(section);

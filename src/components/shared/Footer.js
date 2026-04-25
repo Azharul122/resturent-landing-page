@@ -1,3 +1,5 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
+
 export function loadFooter() {
     
 
@@ -186,6 +188,9 @@ export function loadFooter() {
                 <p class="bf-copy">© 2026 Bridge Restaurant. All rights reserved.</p>
             </div>
         `;
+
+        const target =footer.querySelectorAll("bf-monogram, .bf-info, .bf-social, .bf-divider, .bf-copy");
+        createScrollReveal(target);
 
         document.body.appendChild(footer);
     }

@@ -1,3 +1,5 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
+
 export function loadTestimonial() {
 
   // Inject Google Fonts (only once)
@@ -244,6 +246,10 @@ export function loadTestimonial() {
 
     </div>
   `;
+
+  const targets = section.querySelectorAll('.t-text', '.t-image', '.t-author-name');
+
+createScrollReveal(section, { threshold: 0.1, delay: 100 });
 
   document.body.appendChild(section);
 
