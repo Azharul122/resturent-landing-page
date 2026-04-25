@@ -1,3 +1,5 @@
+import { createScrollReveal } from "../../utils/scroll-revelled";
+
 export function loadAboutUs() {
   // ── Google Fonts ─────────────────────────────────────────────────────────────
   if (!document.getElementById("about-fonts")) {
@@ -223,6 +225,15 @@ export function loadAboutUs() {
       />
     </div>
   `;
+
+  const targets = section.querySelectorAll(
+    ".au-script, .au-title, .au-body, #au-grid"
+  );
+
+  createScrollReveal(targets, {
+    delay: 180,
+    threshold: 0.1,
+  });
 
   document.body.appendChild(section);
 }

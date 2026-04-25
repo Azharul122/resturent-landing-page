@@ -1,3 +1,5 @@
+import { createButton } from "../ui/button";
+
 export function loadOurMenu() {
 
   if (!document.getElementById("our-menu-fonts")) {
@@ -327,6 +329,10 @@ export function loadOurMenu() {
     el.style.setProperty('--bg', el.style.getPropertyValue('--bg'));
     el.style.removeProperty('--bg');
   });
+
+  // const button = createButton("EXPLORE", () => navigate("menu"));
+  // // button.classList.add("om-explore");
+  // section.appendChild(button);
 
   document.body.appendChild(section);
 }

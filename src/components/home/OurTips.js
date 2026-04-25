@@ -1,3 +1,5 @@
+import { createButton } from "../ui/button";
+
 export function loadTips() {
 
   // Inject Google Fonts (only once)
@@ -175,11 +177,16 @@ export function loadTips() {
           tempor se incidid sens ne utabor et dolore magiqua. Ut enim ad miains
           eniam quis nostrudas exercitation ullam de cm.
         </p>
-        <a href="#" class="tips-btn">READ MORE</a>
+
       </div>
+
+      
 
     </div>
   `;
+
+  const btn = createButton("READ MORE", () => { });
+  section.querySelector(".tips-content").appendChild(btn);
 
   document.body.appendChild(section);
 }
