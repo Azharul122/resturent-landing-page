@@ -1,3 +1,5 @@
+import { createButton } from "./ui/button";
+
 export function loadHero() {
   // ── Inject Google Fonts ──────────────────────────────────────────────────────
   if (!document.getElementById("hero-fonts")) {
@@ -5,7 +7,7 @@ export function loadHero() {
     link.id = "hero-fonts";
     link.rel = "stylesheet";
     link.href =
-      "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Cinzel:wght@400;700&family=Raleway:wght@300;400&display=swap";
+      "https://fonts.googleapis.com/css2?family=Eater&display=swap";
     document.head.appendChild(link);
   }
 
@@ -66,9 +68,9 @@ export function loadHero() {
         content: '';
         position: absolute;
         inset: 0;
-        background:
-          radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0,0,0,0.6) 100%),
-          linear-gradient(to right, rgba(0,0,0,0.55) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.55) 100%);
+      background:
+    radial-gradient(ellipse at 50% 50%, transparent 20%, rgba(0,0,0,0.75) 100%),
+    linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 35%, transparent 65%, rgba(0,0,0,0.7) 100%);
         pointer-events: none;
       }
 
@@ -94,6 +96,9 @@ export function loadHero() {
         font-style: italic;
         font-size: clamp(1rem, 2.2vw, 1.35rem);
         color: var(--gold);
+        text-shadow: 
+    0 2px 6px rgba(0,0,0,0.8),
+    0 0 12px rgba(201,168,76,0.3);
         letter-spacing: 0.04em;
         margin-bottom: 0.6rem;
         display: block;
@@ -137,41 +142,43 @@ export function loadHero() {
         max-width: 540px;
         margin: 0 auto 2rem;
         letter-spacing: 0.02em;
+         text-shadow: 
+    0 2px 8px rgba(0,0,0,0.9);
       }
 
       /* CTA button */
-      .fh-btn {
-        display: inline-block;
-        padding: 0.85rem 2.6rem;
-        border: 1px solid var(--white);
-        color: var(--white);
-        font-family: 'Raleway', sans-serif;
-        font-size: 0.72rem;
-        font-weight: 400;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        text-decoration: none;
-        background: transparent;
-        cursor: pointer;
-        transition: background 0.3s, color 0.3s, border-color 0.3s;
-        position: relative;
-        overflow: hidden;
-      }
-      .fh-btn::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: var(--gold);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.35s ease;
-        z-index: -1;
-      }
-      .fh-btn:hover {
-        border-color: var(--gold);
-        color: var(--dark);
-      }
-      .fh-btn:hover::before { transform: scaleX(1); }
+      // .fh-btn {
+      //   display: inline-block;
+      //   padding: 0.85rem 2.6rem;
+      //   border: 1px solid var(--white);
+      //   color: var(--white);
+      //   font-family: 'Raleway', sans-serif;
+      //   font-size: 0.72rem;
+      //   font-weight: 400;
+      //   letter-spacing: 0.22em;
+      //   text-transform: uppercase;
+      //   text-decoration: none;
+      //   background: transparent;
+      //   cursor: pointer;
+      //   transition: background 0.3s, color 0.3s, border-color 0.3s;
+      //   position: relative;
+      //   overflow: hidden;
+      // }
+      // .fh-btn::before {
+      //   content: '';
+      //   position: absolute;
+      //   inset: 0;
+      //   background: var(--gold);
+      //   transform: scaleX(0);
+      //   transform-origin: left;
+      //   transition: transform 0.35s ease;
+      //   z-index: -1;
+      // }
+      // .fh-btn:hover {
+      //   border-color: var(--gold);
+      //   color: var(--dark);
+      // }
+      // .fh-btn:hover::before { transform: scaleX(1); }
 
       /* ── Arrows ── */
       .fh-arrow {
@@ -257,21 +264,23 @@ export function loadHero() {
   const wrapper = $(`<section id="home-section"></section>`);
 
   slides.forEach((s, i) => {
-    wrapper.append(`
-      <div class="fh-slide${i === 0 ? " active" : ""}">
-        <div class="fh-slide-bg" style="background-image:url('${s.bg}')"></div>
-        <div class="fh-content">
-          <span class="fh-subtitle">${s.subtitle}</span>
-          <div class="fh-title-row">
-            <span class="fh-ornament">&#10140;&#10136;</span>
-            <h1 class="fh-title">${s.title}</h1>
-            <span class="fh-ornament">&#10140;&#10136;</span>
-          </div>
-          <p class="fh-body">${s.body}</p>
-          <button class="fh-btn">View More</button>
-        </div>
+    const slide = $(`
+    <div class="fh-slide${i === 0 ? " active" : ""}">
+      <div class="fh-slide-bg" style="background-image:url('${s.bg}')"></div>
+      <div class="fh-content">
+        <span class="fh-subtitle">${s.subtitle}</span>
+        <div class="fh-title-row"><h2 class="fh-title">${s.title}</h2></div>
+        <p class="fh-body">${s.body}</p>
       </div>
-    `);
+    </div>
+  `);
+
+    const btn = createButton("View More", () => {
+      console.log(`Clicked slide ${i}`);
+    });
+
+    slide.find(".fh-content").append(btn);
+    wrapper.append(slide);
   });
 
   // arrows

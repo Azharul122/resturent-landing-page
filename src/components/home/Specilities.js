@@ -1,3 +1,5 @@
+import { createButton } from "../ui/button";
+
 export function loadSpecialties() {
 
   // Inject Google Fonts (only once)
@@ -85,27 +87,38 @@ export function loadSpecialties() {
         margin-bottom: 3rem;
       }
 
-      .sp-btn {
+    .fh-btn {
         display: inline-block;
-        border: 1px solid rgba(245, 240, 232, 0.6);
-        color: #f5f0e8;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 500;
-        letter-spacing: 4px;
+        padding: 0.85rem 2.6rem;
+        border: 1px solid var(--white);
+        color: var(--white);
+        font-family: 'Raleway', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        padding: 1.1rem 2.8rem;
         text-decoration: none;
-        cursor: pointer;
         background: transparent;
-        transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+        position: relative;
+        overflow: hidden;
       }
-
-      .sp-btn:hover {
-        border-color: #c9a96e;
-        color: #c9a96e;
-        background: rgba(201, 169, 110, 0.06);
+      .fh-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+        z-index: -1;
       }
+      .fh-btn:hover {
+        border-color: var(--gold);
+        color: var(--dark);
+      }
+      .fh-btn:hover::before { transform: scaleX(1); }
 
       /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
@@ -135,35 +148,30 @@ export function loadSpecialties() {
     document.head.appendChild(style);
   }
 
-  // ── BUILD HTML ──
+
   const section = document.createElement("section");
   section.id = "bridge-specialties";
 
   section.innerHTML = `
     <div class="sp-wrapper">
-
-      <!-- LEFT: image -->
       <div class="sp-left">
-        <img
-          src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=1200&q=85"
-          alt="Our Best Specialties"
-        />
+        <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=1200&q=85" alt="Our Best Specialties"/>
       </div>
-
-      <!-- RIGHT: content -->
       <div class="sp-right">
         <div class="sp-subtitle">Recommendations</div>
         <h2 class="sp-title">OUR BEST<br>SPECIALTIES</h2>
         <p class="sp-desc">
           Lorem ipsum dolor sit amet, consectet adipisicing eli sed do eiu sm od
-          tempor incididunt ut abore et dolore mag aliqua. Ut enim ad minm eniam
-          quis nostrud.
+          tempor incididunt ut abore et dolore mag aliqua.
         </p>
-        <a href="#" class="sp-btn">VIEW ALL</a>
       </div>
-
     </div>
   `;
 
+  const btn = createButton("View All", () => {
+    // window.location.href = "#menu"; 
+  });
+
+  section.querySelector(".sp-right").appendChild(btn);
   document.body.appendChild(section);
 }
